@@ -1,0 +1,24 @@
+Lista = function(obj){
+	this._proximo = null;
+	this._anterior = null; 
+}
+
+Lista.prototype.next = function(){
+	return this['_proximo'];	
+}
+
+Lista.prototype.adicionar = function(){
+	var temp = new Lista();
+	if(this._proximo != null){
+		temp._proximo = this._proximo;
+		this._proximo._anterior = temp;
+	}
+	temp._anterior = this;
+	this._proximo = temp;
+	return this;
+}
+
+Lista.prototype.previous = function(){
+	return this['_anterior'];
+}
+lista = new Lista();
