@@ -1,13 +1,9 @@
-Lista = function(obj){
+List = function(obj){
 	this._proximo = null;
 	this._anterior = null; 
 }
 
-Lista.prototype.next = function(){
-	return this['_proximo'];	
-}
-
-Lista.prototype.adicionar = function(){
+List.prototype.add = function(){
 	var temp = new Lista();
 	if(this._proximo != null){
 		temp._proximo = this._proximo;
@@ -18,7 +14,17 @@ Lista.prototype.adicionar = function(){
 	return this;
 }
 
-Lista.prototype.previous = function(){
+List.prototype.next = function(){
+	if(this['_proximo']==null)
+		return false;
+	return this['_proximo'];	
+}
+
+List.prototype.previous = function(){
 	return this['_anterior'];
 }
-lista = new Lista();
+
+//to use
+var list = new List();
+list.anyValue = 3;
+list.add().add().next().anyValue = 4;
